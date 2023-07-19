@@ -3,7 +3,6 @@
 
 #include "MyCharacter.h"
 #include "../Global/GlobalGameInstance.h"
-
 // Sets default values
 AMyCharacter::AMyCharacter()
 {
@@ -11,7 +10,8 @@ AMyCharacter::AMyCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 	BaseTurnRate = 45.f;
 	BaseLookUpRate = 45.f;
-
+	// Character Movement Setting
+	
 	JumpMaxHoldTime = 0.0f;
 
 	// 언리얼은 컴포넌트라는것을 만들려면 생성자에서만 만들수 있다.
