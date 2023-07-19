@@ -62,7 +62,7 @@ AMyCharacter::AMyCharacter()
 void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	JumpMaxCount = 2;
+	JumpMaxCount = 1;
 
 	GetWorld()->GetAuthGameMode();
 	UGlobalGameInstance* Inst = GetGameInstance<UGlobalGameInstance>();
