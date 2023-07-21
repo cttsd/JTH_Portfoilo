@@ -34,7 +34,7 @@ AMyCharacter::AMyCharacter()
 
 	// WeaponArrays.Add();
 
-	{
+	/* {
 		// 매쉬를 쓰겠다고 하는것.
 		static ConstructorHelpers::FObjectFinder<UStaticMesh> MeshLoader(TEXT("/Script/Engine.StaticMesh'/Game/Resources/Test/Static/2Hand-Sword.2Hand-Sword'"));
 
@@ -42,7 +42,7 @@ AMyCharacter::AMyCharacter()
 		{
 			WeaponArrays.Add(MeshLoader.Object);
 		}
-	}
+	}*/
 
 	/* {
 		// 매쉬를 쓰겠다고 하는것.

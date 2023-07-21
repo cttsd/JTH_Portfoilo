@@ -6,7 +6,7 @@
 
 UGlobalGameInstance::UGlobalGameInstance()
 {
-	{
+	/* {
 		FString DataPath = TEXT("/Script/Engine.DataTable'/Game/BluePrint/Global/Data/DT_GameMeshData.DT_GameMeshData'");
 		ConstructorHelpers::FObjectFinder<UDataTable> DataTable(*DataPath);
 
@@ -29,7 +29,7 @@ UGlobalGameInstance::UGlobalGameInstance()
 		// MeshDatas->GetAllRows()
 
 		// Arrmesh
-	}
+	}*/
 
 }
 UGlobalGameInstance::~UGlobalGameInstance()
