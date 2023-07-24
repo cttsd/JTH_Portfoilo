@@ -7,8 +7,11 @@ public class JTH : ModuleRules
 	public JTH(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
-	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
+
+        PublicIncludePaths.Add(ModuleDirectory);
+        PrivateIncludePaths.Add(ModuleDirectory);
+
+        PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "UMG", "NavigationSystem", "AIModule", "GamePlayTasks" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
