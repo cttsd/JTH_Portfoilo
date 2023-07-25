@@ -13,5 +13,5 @@ UCLASS()
 class JTH_API AAICon : public AAIController
 {
 	GENERATED_BODY()
-	
+
 };
