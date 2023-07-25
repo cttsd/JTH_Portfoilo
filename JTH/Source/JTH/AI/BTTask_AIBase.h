@@ -3,15 +3,45 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "BehaviorTree/BTTaskNode.h"
+#include "BehaviorTree/Tasks/BTTask_BlackboardBase.h"
+#include <Global/GlobalCharacter.h>
+#include <AI/AICon.h>
+#include <Global/GlobalEnums.h>
+#include <BehaviorTree/BlackboardComponent.h>
 #include "BTTask_AIBase.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
-class JTH_API UBTTask_AIBase : public UBTTaskNode
+class JTH_API UBTTask_AIBase : public UBTTask_BlackboardBase
 {
 	GENERATED_BODY()
-	
+
+public:
+	UBTTask_AIBase();
+	void OnGameplayTaskActivated(class UGameplayTask&) override;
+
+	float GetStateTime(UBehaviorTreeComponent& OwnerComp);
+
+	AIState GetAiState(UBehaviorTreeComponent& OwnerComp);
+
+	void ResetStateTime(UBehaviorTreeComponent& OwnerComp);
+
+	template<typename EnumType>
+	void SetStateChange(UBehaviorTreeComponent& OwnerComp, EnumType _State)
+	{
+		SetStateChange(OwnerComp, static_cast<uint8>(_State));
+	}
+
+	void SetStateChange(UBehaviorTreeComponent& OwnerComp, uint8 _State);
+
+	class AGlobalCharacter* GetGlobalCharacter(UBehaviorTreeComponent& OwnerComp);
+
+	class UBlackboardComponent* GetBlackboardComponent(UBehaviorTreeComponent& OwnerComp);
+
+
+	EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory);
+
+	void TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DelataSeconds) override;
 };

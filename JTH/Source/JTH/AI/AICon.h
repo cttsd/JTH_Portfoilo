@@ -13,5 +13,16 @@ UCLASS()
 class JTH_API AAICon : public AAIController
 {
 	GENERATED_BODY()
+public:
+	AAICon();
 
+protected:
+	void OnPossess(APawn* _InPawn) override;
+
+private:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+		class UBehaviorTreeComponent* BehaviorTreeComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+		class UBlackboardComponent* BlackboardComponent;
 };
