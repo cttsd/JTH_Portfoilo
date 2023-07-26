@@ -3,11 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Character.h"
+#include "Global/GlobalCharacter.h"
 #include "AICharacter.generated.h"
 
 UCLASS()
-class JTH_API AAICharacter : public ACharacter
+class JTH_API AAICharacter : public AGlobalCharacter
 {
 	GENERATED_BODY()
 
@@ -26,3 +26,4 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
 		class UBlackboardComponent* BlackboardComponent;
 };
+

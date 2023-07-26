@@ -3,6 +3,7 @@
 
 #include "GlobalGameInstance.h"
 #include "Data/GameMeshData.h"
+#include <Global/Data/MonsterData.h>
 
 UGlobalGameInstance::UGlobalGameInstance()
 {
@@ -53,3 +54,20 @@ UGlobalGameInstance::~UGlobalGameInstance()
 
 	return FindTable->Mesh;
 }*/
+
+FMonsterData* UGlobalGameInstance::GetMonsterData(FName _Name)
+{
+	if (nullptr == MonsterDatas)
+	{
+		return nullptr;
+	}
+
+	FMonsterData* FindTable = MonsterDatas->FindRow<FMonsterData>(_Name, _Name.ToString());
+
+	if (nullptr == FindTable)
+	{
+		return nullptr;
+	}
+
+	return FindTable;
+}

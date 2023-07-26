@@ -2,33 +2,31 @@
 
 
 #include "Monster.h"
+#include <Global/GlobalGameInstance.h>
+#include <Global/Data/MonsterData.h>
+#include "BehaviorTree/BlackboardComponent.h"
 
-// Sets default values
-AMonster::AMonster()
-{
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
 
-}
-
-// Called when the game starts or when spawned
 void AMonster::BeginPlay()
 {
+	UGlobalGameInstance* Inst = GetWorld()->GetGameInstance<UGlobalGameInstance>();
+
+	if (nullptr != Inst)
+	{
+		CurMonsterData = Inst->GetMonsterData(DataName);
+
+		for (TPair<AIState, UAnimMontage*> Pair : CurMonsterData->MapAnimation)
+		{
+			PushAnimation(Pair.Key, Pair.Value);
+		}
+
+		SetAniState(AIState::DEATH);
+	}
+
 	Super::BeginPlay();
-	
+
+	GetBlackboardComponent()->SetValueAsEnum(TEXT("AIState"), static_cast<uint8>(AIState::IDLE));
+	GetBlackboardComponent()->SetValueAsString(TEXT("TargetTag"), TEXT("Player"));
+	GetBlackboardComponent()->SetValueAsFloat(TEXT("SearchRange"), 1500.0f);
+	GetBlackboardComponent()->SetValueAsFloat(TEXT("AttackRange"), 200.0f);
 }
-
-// Called every frame
-void AMonster::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
-
-// Called to bind functionality to input
-void AMonster::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
-}
-
